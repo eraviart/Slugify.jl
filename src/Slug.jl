@@ -105,7 +105,7 @@ end
 
 
 function slugify(string::String; separator::Char = '-', transform::Function = lowercase)
-  """Simplify a string, converting it to a lowercase ASCII subset."""
+  """Simplify a string, converting it to an ASCII subset of 0-9, A-Z, a-z & separators."""
   simplified = join([
     slugify_char(char, separator = separator, transform = transform)
     for char in string
