@@ -1,4 +1,4 @@
-# Slug -- A conversion and validation toolbox
+# Slug -- A library that simplifies a text to an ASCII subset
 # By: Emmanuel Raviart <emmanuel@raviart.com>
 #
 # Copyright (C) 2015 Emmanuel Raviart
