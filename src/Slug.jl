@@ -105,19 +105,7 @@ end
 
 
 function slugify(string::String; separator::Char = '-', transform::Function = lowercase)
-  """Simplify a string, converting it to a lowercase ASCII subset.
-
-  >>> slugify(u'Hello world!')
-  u'hello-world'
-  >>> slugify(u'   Hello   world!   ')
-  u'hello-world'
-  >>> slugify('œil, forêt, ça, où...')
-  u'oeil-foret-ca-ou'
-  >>> slugify('Hello world!')
-  u'hello-world'
-  >>> print slugify(None)
-  None
-  """
+  """Simplify a string, converting it to a lowercase ASCII subset."""
   simplified = join([
     slugify_char(char, separator = separator, transform = transform)
     for char in string
