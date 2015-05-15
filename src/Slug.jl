@@ -1,10 +1,10 @@
-# Slug -- A library that simplifies a text to an ASCII subset
+# Slugify -- A library that simplifies a text to an ASCII subset
 # By: Emmanuel Raviart <emmanuel@raviart.com>
 #
 # Copyright (C) 2015 Emmanuel Raviart
-# https://github.com/eraviart/Slug.jl
+# https://github.com/eraviart/Slugify.jl
 #
-# This file is part of Slug.
+# This file is part of Slugify.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 # limitations under the License.
 
 
-module Slug
+module Slugify
 
 
 export slugify
