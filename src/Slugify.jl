@@ -15,7 +15,7 @@ module Slugify
 export slugify
 
 
-ASCII_TRANSLATIONS = (Char => ASCIIString)[
+ASCII_TRANSLATIONS = Dict{Char,ASCIIString}(
   ' ' => " ",  # U+00A0 NO-BREAK SPACE
   'À' => "A",  # U+00C0 LATIN CAPITAL LETTER A WITH GRAVE
   'Á' => "A",  # U+00C1 LATIN CAPITAL LETTER A WITH ACUTE
@@ -83,7 +83,7 @@ ASCII_TRANSLATIONS = (Char => ASCIIString)[
   'œ' => "oe",  # U+0153 LATIN SMALL LIGATURE OE
   '‘' => "'",  # U+2018 LEFT SINGLE QUOTATION MARK
   '’' => "'",  # U+2019 RIGHT SINGLE QUOTATION MARK
-]
+)
 
 
 function char_to_ascii(unicode_char::Char)
@@ -94,13 +94,13 @@ function char_to_ascii(unicode_char::Char)
 end
 
 
-function slugify(string::String; separator::Char = '-', transform::Function = lowercase)
+function slugify(string::AbstractString; separator::Char = '-', transform::Function = lowercase)
   """Simplify a string, converting it to an ASCII subset of 0-9, A-Z, a-z & separators."""
   simplified = join([
     slugify_char(char, separator = separator, transform = transform)
     for char in string
   ], "")
-  return join(split(simplified, separator, 0, false), separator)
+  return join(split(simplified, separator, keep = false), separator)
 end
 
 
