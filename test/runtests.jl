@@ -9,9 +9,9 @@
 # The Slugify.jl package is licensed under the MIT "Expat" License.
 
 
-using Base.Test
+using Test
 
-importall Slugify
+using Slugify
 
 
 # write your own tests here

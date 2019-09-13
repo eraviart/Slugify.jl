@@ -15,7 +15,7 @@ module Slugify
 export slugify
 
 
-ASCII_TRANSLATIONS = Dict{Char,ASCIIString}(
+ASCII_TRANSLATIONS = Dict{Char,String}(
   ' ' => " ",  # U+00A0 NO-BREAK SPACE
   'À' => "A",  # U+00C0 LATIN CAPITAL LETTER A WITH GRAVE
   'Á' => "A",  # U+00C1 LATIN CAPITAL LETTER A WITH ACUTE
@@ -89,7 +89,7 @@ ASCII_TRANSLATIONS = Dict{Char,ASCIIString}(
 function char_to_ascii(unicode_char::Char)
   """Convert an unicode character to a string of several ASCII characters."""
   return get(ASCII_TRANSLATIONS, unicode_char) do
-    return unicode_char < 0x80 ? string(unicode_char) : ""
+    return unicode_char < Char(0x80) ? string(unicode_char) : ""
   end
 end
 
@@ -100,7 +100,7 @@ function slugify(string::AbstractString; separator::Char = '-', transform::Funct
     slugify_char(char, separator = separator, transform = transform)
     for char in string
   ], "")
-  return join(split(simplified, separator, keep = false), separator)
+  return join(split(simplified, separator, keepempty=false), separator)
 end
 
 
